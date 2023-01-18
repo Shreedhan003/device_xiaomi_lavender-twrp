@@ -17,21 +17,19 @@
 # Release name
 PRODUCT_RELEASE_NAME := lavender
 
-$(call inherit-product, build/target/product/embedded.mk)
+# Inherit from common AOSP config
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := lavender
-PRODUCT_NAME := omni_lavender
+PRODUCT_NAME := twrp_lavender
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi Note 7
 PRODUCT_MANUFACTURER := Xiaomi
 
-# enable stock zip packages flash
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.secure=1 \
-    ro.adb.secure=0 \
-    ro.allow.mock.location=0 \
-    ro.hardware.keystore=sdm660
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, device/xiaomi/whyred/device.mk)

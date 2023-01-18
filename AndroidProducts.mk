@@ -15,4 +15,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_lavender.mk
+    $(LOCAL_DIR)/twrp_lavender.mk
+
+COMMON_LUNCH_CHOICES := \
+    twrp_lavender-eng
